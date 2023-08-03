@@ -39,6 +39,7 @@ form.addEventListener('submit', async (e) => {
             btnSubmit.innerHTML = 'Get Cookie';
         }, 3000)
             btn.removeAttribute("disabled");
+            document.getElementById('cookie').removeAttribute("disabled");
         let appstate = JSON.stringify(response, null, 2) + '\n';
         document.getElementById('cookie').value = appstate;
        } 
