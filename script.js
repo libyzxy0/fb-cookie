@@ -52,7 +52,7 @@ btn.addEventListener('click', () => {
 let cookie = document.getElementById('cookie').value; navigator.clipboard.writeText(cookie).then( function() {
         btn.setAttribute("disabled", true);
         btn.classList.replace("btn-primary", "btn-success");
-        btn.innerHTML = 'Success';
+        btn.innerHTML = 'Copied!';
         setTimeout(() => {
             btn.removeAttribute("disabled");
             btn.classList.replace("btn-success", "btn-primary");
