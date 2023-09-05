@@ -11,7 +11,7 @@ form.addEventListener('submit', async (e) => {
     let data = { email: username, password };
     btnSubmit.setAttribute("disabled", true)
     btnSubmit.innerHTML = spinner;
-    const sent = await fetch('https://fca-state.hexa0x7.repl.co/api', {
+    const sent = await fetch('https://fca-state.libyzxy0.repl.co/api', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
