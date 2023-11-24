@@ -1,5 +1,6 @@
 const form = document.getElementById('cred');
-const btn = document.getElementById('copy');
+const btnCopyCookie = document.getElementById('copy-cookie');
+const btnCopyState = document.getElementById('copy-state');
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     let spinner = `<div class="spinner-border spinner-border-sm" role="status">
@@ -40,23 +41,37 @@ form.addEventListener('submit', async (e) => {
         }, 3000)
             btn.removeAttribute("disabled");
             document.getElementById('cookie').removeAttribute("disabled");
-        let appstate = JSON.stringify(response, null, 2) + '\n';
+        let appstate = JSON.stringify(response.appstate, null, 2) + '\n';
+        let state = response.state;
         document.getElementById('cookie').value = appstate;
+        document.getElementById('state').value = state;
        } 
     } catch (error) {
         console.log(error)
     }
 })
 
-btn.addEventListener('click', () => {
+btnCopyCookie.addEventListener('click', () => {
 let cookie = document.getElementById('cookie').value; navigator.clipboard.writeText(cookie).then( function() {
-        btn.setAttribute("disabled", true);
-        btn.classList.replace("btn-primary", "btn-success");
-        btn.innerHTML = 'Copied!';
+        btnCopyCookie.setAttribute("disabled", true);
+        btnCopyCookie.classList.replace("btn-primary", "btn-success");
+        btnCopyCookie.innerHTML = 'Copied!';
         setTimeout(() => {
-            btn.removeAttribute("disabled");
-            btn.classList.replace("btn-success", "btn-primary");
-            btn.innerHTML = 'Copy Cookie';
+            btnCopyCookie.removeAttribute("disabled");
+            btnCopyCookie.classList.replace("btn-success", "btn-primary");
+            btnCopyCookie.innerHTML = 'Copy Cookie';
+        }, 3000)
+    })
+})
+btnCopyState.addEventListener('click', () => {
+let cookie = document.getElementById('state').value; navigator.clipboard.writeText(cookie).then( function() {
+        btnCopyState.setAttribute("disabled", true);
+        btnCopyState.classList.replace("btn-primary", "btn-success");
+        btnCopyState.innerHTML = 'Copied!';
+        setTimeout(() => {
+            btnCopyState.removeAttribute("disabled");
+            btnCopyState.classList.replace("btn-success", "btn-primary");
+            btnCopyState.innerHTML = 'Copy State';
         }, 3000)
     })
 })
